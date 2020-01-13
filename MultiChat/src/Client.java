@@ -55,7 +55,7 @@ public class Client extends JFrame{
     private void chatSave() {
     	 try{
             FileOutputStream print =
-                 new FileOutputStream(this.username+".txt", true);
+                 new FileOutputStream("D:\\"+this.username+".txt", true);
              for (String str:chatList)
                 print.write(str.getBytes());
              print.close();
