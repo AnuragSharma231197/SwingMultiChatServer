@@ -11,7 +11,8 @@ import java.io.*;
 import java.net.*;
 import javax.swing.*;
 
-public class Client extends JFrame{
+public class Client extends JFrame
+{
 	private static final long serialVersionUID = 10L;
 	private String server, username;
 	private JTextField serverAddress;
@@ -46,24 +47,50 @@ public class Client extends JFrame{
     //!!!Note - Revise it to GUI Style. Refer to myGUI in server side
     private void displayMsg(String msg) {
         chatList.add(msg);
-        
+        chatSave(msg);
         //display events in GUI
         cg.appendRoom(msg);     // append in the room window
     }
 
     //!!!Note - add your code here to output the chat list to log file
-    private void chatSave() {
+    private void chatSave(String str) {
     	 try{
-            FileOutputStream print =
-                 new FileOutputStream("D:\\"+this.username+".txt", true);
-             for (String str:chatList)
-                print.write(str.getBytes());
-             print.close();
-         } catch (IOException e) {
+    		 FileOutputStream out=new FileOutputStream(this.username+".txt", true);
+    		 out.write(str.getBytes());
+    		 out.flush();
+    		 out.close();
+    	 } 
+    	 catch (IOException e) {
              // do nothing
          }
     }
-
+    
+    public ArrayList<String> readPreviousChat(String username) 
+    {
+    	ArrayList<String> list=new ArrayList<String>();
+    	
+    	try 
+    	{
+    		BufferedReader br=new BufferedReader(new FileReader(username+".txt"));
+    		//StringBuilder build=new StringBuilder("");
+    		String line;
+    		while((line = br.readLine()) != null)
+    		{
+    		    list.add(line);
+    		}
+    		br.close();
+    	}
+    	catch(IOException e) 
+    	{
+    		ArrayList<String> random=new ArrayList<String>();
+    		random.add("Chats Not Found");
+    		
+    		return random;
+    	}
+    	
+    	return list;
+    }
+    
     public boolean run() {
         //Try to connect to server
         try {
@@ -154,7 +181,6 @@ public class Client extends JFrame{
         } catch(Exception e) {
             // do nothing
         }
-        chatSave();
 
         //!!!Note - You may notify your GUI when closed.
         //cg.connectionFailed();

@@ -264,7 +264,7 @@ public class Server {
                 if (msg.equals("LOGOUT")) {
                     displayEvent(username + " disconnected with a LOGOUT message.");
                     broadcast(username + " disconnected with a LOGOUT message." +"\n");
-                    //writeMsg(username + " disconnected with a LOGOUT message." +"\n");
+               
                     keepGoing = false;
                 } else if (msg.equals("WHOISIN")) { 
                     writeMsg("List of the users connected at " + sdf.format(new Date()) +

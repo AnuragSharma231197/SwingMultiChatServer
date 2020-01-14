@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.util.*;
 
 public class myGUIClient extends JFrame implements ActionListener, WindowListener{
 
@@ -50,6 +51,20 @@ public class myGUIClient extends JFrame implements ActionListener, WindowListene
 		initialize();
 		
 		this.theClient = new Client(serverAddress, portNumber, userName, this);
+		
+		ArrayList<String> list=this.theClient.readPreviousChat(userName);
+		
+		if(list.size()!=0) 
+		{
+			for(int i=0;i<list.size();i++) 
+			{
+				appendRoom(list.get(i).toString()+"\n");
+			}
+		}
+		else
+		{
+			appendRoom("No Chats Found");
+		}
 		
 		if (!theClient.run())
             return;

@@ -1,0 +1,15 @@
+00:41:21 Server waiting for Clients on port 1500.
+00:41:38 king just connected.
+00:41:38 Server waiting for Clients on port 1500.
+00:41:48 king disconnected with a LOGOUT message.
+00:41:21 Server waiting for Clients on port 1500.
+00:41:38 king just connected.
+00:41:38 Server waiting for Clients on port 1500.
+00:41:48 king disconnected with a LOGOUT message.
+00:45:42 Anurag just connected.
+00:45:42 Server waiting for Clients on port 1500.
+00:46:04 Anurag Exception reading Streams: java.net.SocketException: Socket closed
+00:52:54 Server waiting for Clients on port 1500.
+00:53:27 Anurag just connected.
+00:53:27 Server waiting for Clients on port 1500.
+00:53:39 Anurag disconnected with a LOGOUT message.
